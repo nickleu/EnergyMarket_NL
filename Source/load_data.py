@@ -25,3 +25,28 @@ def load_solar_test():
     repo_root = Path(__file__).resolve().parent.parent
     csv_path = repo_root / "Data" / "raw" / "GUI_WIND_SOLAR_GENERATION_FORECAST_SOLAR_Test_24012025.csv"
     return pd.read_csv(csv_path)
+
+def load_generation_test():
+    repo_root = Path(__file__).resolve().parent.parent
+    csv_path = repo_root / "Data" / "raw" / "GUI_TOTAL_GENERATION_FORECAST_Test_24012025.csv"
+    return pd.read_csv(csv_path)
+
+def load_2025():
+    repo_root = Path(__file__).resolve().parent.parent
+    data_dir = repo_root / "Data" / "external"
+
+    csv_files = sorted(data_dir.glob("GUI_*.csv"))
+
+    if not csv_files:
+        raise FileNotFoundError("No matching CSV files found")
+
+    dfs = []
+
+    for f in csv_files:
+        df = pd.read_csv(f)
+        dfs.append(df)
+
+    # Horizontal concatenation (columns side by side)
+    df_out = pd.concat(dfs, axis=1)
+
+    return df_out
