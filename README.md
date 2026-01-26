@@ -5,7 +5,7 @@ How predictable are Dutch day-ahead electricity prices given fundamentals, and u
 EPEX SPOT NL Day-Ahead
 
 ## Modeling:
-WIP
+Residual load - price correlation
 
 ## Limitations:
 WIP
