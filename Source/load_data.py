@@ -50,3 +50,8 @@ def load_2025():
     df_out = pd.concat(dfs, axis=1)
 
     return df_out
+
+def load_price_test_2026():
+    repo_root = Path(__file__).resolve().parent.parent
+    csv_path = repo_root / "Data" / "external" / "GUI_ENERGY_PRICES_2026.csv"
+    return pd.read_csv(csv_path)
