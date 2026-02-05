@@ -35,7 +35,7 @@ def load_2025():
     repo_root = Path(__file__).resolve().parent.parent
     data_dir = repo_root / "Data" / "external"
 
-    csv_files = sorted(data_dir.glob("GUI_*.csv"))
+    csv_files = sorted(data_dir.glob("2025_GUI_*.csv"))
 
     if not csv_files:
         raise FileNotFoundError("No matching CSV files found")
@@ -51,7 +51,22 @@ def load_2025():
 
     return df_out
 
-def load_price_test_2026():
+def load_2026():
     repo_root = Path(__file__).resolve().parent.parent
-    csv_path = repo_root / "Data" / "external" / "GUI_ENERGY_PRICES_2026.csv"
-    return pd.read_csv(csv_path)
+    data_dir = repo_root / "Data" / "external"
+
+    csv_files = sorted(data_dir.glob("2026_GUI_*.csv"))
+
+    if not csv_files:
+        raise FileNotFoundError("No matching CSV files found")
+
+    dfs = []
+
+    for f in csv_files:
+        df = pd.read_csv(f)
+        dfs.append(df)
+
+    # Horizontal concatenation (columns side by side)
+    df_out = pd.concat(dfs, axis=1)
+
+    return df_out
