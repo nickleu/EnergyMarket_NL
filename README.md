@@ -16,3 +16,4 @@ EPEX SPOT NL Day-Ahead
 
 ## Goal:
 Identify high-uncertainty market phases and compare modeling techniques to reduce errors
+![Dutch day-ahead prices (EPEX SPOT NL): out-of-sample model test, January 2026](Dutch day-ahead prices (EPEX SPOT NL).png)
